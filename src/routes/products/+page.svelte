@@ -6,11 +6,12 @@
     import { cartVisible } from '$lib/stores/cartVisibilityStore.js';
     import CartDrawer from '$lib/components/CartDrawer.svelte';
 
+    // Reactive reference to the cart
     let cartItems = [];
-    $: cartItems = $cart; // Reactively listen for cart changes
+    $: cartItems = $cart; // Ensures reactivity to cart updates
 
     function handleAddToCart(product) {
-        addToCart(product); // This will update the cart store
+        addToCart(product); // Add product to cart
         cartVisible.set(true); // Open the cart drawer
     }
 </script>

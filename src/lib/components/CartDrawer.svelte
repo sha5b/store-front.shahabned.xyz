@@ -4,7 +4,7 @@
 
     // Reactively listen to the cart store changes
     let cartItems = [];
-    $: cartItems = $cart;
+    $: cartItems = $cart; // Ensures reactivity to cart updates
 
     function closeCart() {
         cartVisible.set(false);

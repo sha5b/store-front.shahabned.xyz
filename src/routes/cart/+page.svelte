@@ -1,24 +1,21 @@
 <script>
-    import { cart, removeFromCart, updateQuantity } from '$lib/stores/cartStore.js';
+    import { cart } from '$lib/stores/cartStore.js';
 
-
-    // Subscribe to the cart store
+    // Reactively listen to the cart store changes
     let cartItems = [];
-    $: cartItems = $cart;
+    $: cartItems = $cart; // Automatically updates when cart store changes
 </script>
 
-<div class="cart">
+<div>
     {#if cartItems.length > 0}
         {#each cartItems as item}
-            <div class="cart-item">
+            <div>
                 <h3>{item.title}</h3>
-                <p>Quantity: <input type="number" bind:value={item.quantity} on:change={() => updateQuantity(item.id, +item.quantity)} /></p>
+                <p>Quantity: {item.quantity}</p>
                 <p>Price: {item.price * item.quantity}</p>
-                <button on:click={() => removeFromCart(item.id)}>Remove</button>
             </div>
         {/each}
         <p>Total: {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</p>
-        <button>Proceed to Checkout</button>
     {:else}
         <p>Your cart is empty.</p>
     {/if}

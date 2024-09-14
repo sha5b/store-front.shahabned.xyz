@@ -1,21 +1,21 @@
 import { writable } from 'svelte/store';
 
-// Create the cart store
-export const cart = writable([]);
+// Initialize the cart as a writable store
+export const cart = writable([]); // Initialize cart store
 
-// Function to add a product to the cart
 export const addToCart = (product, quantity = 1) => {
     cart.update((items) => {
+        console.log("Before update:", items); // Debugging log
         const existingItem = items.find((item) => item.id === product.id);
         if (existingItem) {
             existingItem.quantity += quantity;
         } else {
             items.push({ ...product, quantity });
         }
+        console.log("After update:", items); // Debugging log
         return items;
     });
 };
-
 // Function to remove a product from the cart
 export const removeFromCart = (productId) => {
     cart.update((items) => items.filter((item) => item.id !== productId));
@@ -28,6 +28,6 @@ export const updateQuantity = (productId, quantity) => {
         if (item) {
             item.quantity = quantity;
         }
-        return items;
+        return items; // Ensure updated items are returned
     });
 };
