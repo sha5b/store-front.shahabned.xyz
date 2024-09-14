@@ -2,12 +2,15 @@
     export let data;
     const products = data.products;
 
-    import { addToCart } from '$lib/stores/cartStore.js';
+    import { addToCart, cart } from '$lib/stores/cartStore.js';
     import { cartVisible } from '$lib/stores/cartVisibilityStore.js';
     import CartDrawer from '$lib/components/CartDrawer.svelte';
 
+    let cartItems = [];
+    $: cartItems = $cart; // Reactively listen for cart changes
+
     function handleAddToCart(product) {
-        addToCart(product);
+        addToCart(product); // This will update the cart store
         cartVisible.set(true); // Open the cart drawer
     }
 </script>

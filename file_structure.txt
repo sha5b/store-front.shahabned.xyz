@@ -1,0 +1,19 @@
+src/
+    app.d.ts
+    app.html
+    lib/
+        index.js
+        components/
+            CartDrawer.svelte
+        stores/
+            cartStore.js
+            cartVisibilityStore.js
+    routes/
+        +page.svelte
+        cart/
+            +page.svelte
+        products/
+            +page.server.js
+            +page.svelte
+            [id]/
+                +page.svelte

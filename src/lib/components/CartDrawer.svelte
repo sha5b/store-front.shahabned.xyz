@@ -1,8 +1,8 @@
-<!-- src/components/CartDrawer.svelte -->
 <script>
     import { cart, removeFromCart, updateQuantity } from '$lib/stores/cartStore.js';
     import { cartVisible } from '$lib/stores/cartVisibilityStore.js';
 
+    // Reactively listen to the cart store changes
     let cartItems = [];
     $: cartItems = $cart;
 
